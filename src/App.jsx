@@ -9,11 +9,27 @@ const check_texts = [
 ];
 
 function App() {
-  const [emailError, setEmailError] = useState(false)
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState(false);
 
-  function handle_submit(e) {
+  const check_email_errors = () => {
+    let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (email === "" || !regex.test(email)) {
+      setEmailError(true);
+      return;
+    }
+    else {
+      setEmailError(false);
+    }
+  };
+
+  const handle_submit = (e) => {
     e.preventDefault();
-  }
+
+    check_email_errors();
+
+
+  };
 
   return (
     <>
@@ -27,14 +43,20 @@ function App() {
               <CheckInfo key={index} text={content} />,
             ])}
           </div>
-          <form action={handle_submit}>
+          <form onSubmit={handle_submit}>
             <div className="input_container">
-              <label htmlFor="email">Email address</label>
+              <div className="label_container">
+                <label htmlFor="email">Email address</label>
+                {emailError && 
+                  <label className="error_label" htmlFor="email">Valid email required</label>
+                }
+              </div>
               <input
-                type="email"
+                className={emailError ? "input_error" : ""}
+                type="text"
                 name="email"
-                id="email"
                 placeholder="email@company.com"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <input type="submit" value="Subscribe to monthly newsletter" />

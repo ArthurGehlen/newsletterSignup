@@ -10,7 +10,7 @@
     src: url('assets/fonts/Roboto-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
-}
+}   
 
 * {
     margin: 0;
@@ -81,13 +81,22 @@ main .infos_section form .input_container label {
     font-size: .720rem;
     font-weight: 700;
 }
+
+main .infos_section form .input_container .label_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+main .infos_section form .input_container .error_label {
+    color: hsl(4, 100%, 67%) !important;
+}
  
 input {
     padding: 1rem;
     border-radius: .4rem;
 }
 
-input[type="email"] {
+input[type="text"] {
     border: 1px solid hsl(0, 0%,58%);
 }
 
@@ -96,4 +105,16 @@ input[type="submit"] {
     color: hsl(0, 0%, 100%);
     background-color: hsl(234, 29%, 20%);
     border: 1px solid hsl(234, 29%, 20%);
+}
+
+.input_error {
+    background-color: hsla(4, 100%, 67%, .4) !important;
+    color: hsl(4, 100%, 67%) !important;
+    border: 1px solid hsl(4, 100%, 67%) !important;
+}
+
+.input_error:focus {
+   background-color: hsla(4, 100%, 67%, .4) !important;
+    border: 1px solid hsl(4, 100%, 67%) !important;
+    outline: none;
 }
