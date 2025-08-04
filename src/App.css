@@ -51,7 +51,7 @@ main .infos_section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.25rem;
 }
 
 main .infos_section h1 {
@@ -74,4 +74,26 @@ main .infos_section .checkers_container {
 main .infos_section form .input_container {
     display: flex;
     flex-direction: column;
+    gap: .4rem;
+}
+
+main .infos_section form .input_container label {
+    font-size: .720rem;
+    font-weight: 700;
+}
+ 
+input {
+    padding: 1rem;
+    border-radius: .4rem;
+}
+
+input[type="email"] {
+    border: 1px solid hsl(0, 0%,58%);
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(234, 29%, 20%);
+    border: 1px solid hsl(234, 29%, 20%);
 }

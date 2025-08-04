@@ -1,3 +1,4 @@
+import { useState } from "react";
 import CheckInfo from "./components/CheckInfo";
 import "./App.css";
 
@@ -8,10 +9,10 @@ const check_texts = [
 ];
 
 function App() {
-  // function to change the main style when the user is on mobile
-  function check_window_width() {
-    const width = window.innerWidth;
-    console.log(width);
+  const [emailError, setEmailError] = useState(false)
+
+  function handle_submit(e) {
+    e.preventDefault();
   }
 
   return (
@@ -26,7 +27,7 @@ function App() {
               <CheckInfo key={index} text={content} />,
             ])}
           </div>
-          <form action={check_window_width}>
+          <form action={handle_submit}>
             <div className="input_container">
               <label htmlFor="email">Email address</label>
               <input
@@ -36,7 +37,7 @@ function App() {
                 placeholder="email@company.com"
               />
             </div>
-            <button type="submit">Subscribe to monthly newsletter</button>
+            <input type="submit" value="Subscribe to monthly newsletter" />
           </form>
         </section>
       </main>
