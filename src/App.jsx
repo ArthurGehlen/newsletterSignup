@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CheckInfo from "./components/CheckInfo";
 import "./App.css";
+import icon_success from "./assets/images/icon-success.svg";
 
 const check_texts = [
   "Product discovery and building what matters",
@@ -28,12 +29,18 @@ function App() {
 
     check_email_errors();
 
-
+    document.getElementById("main").style.display = "none";
+    document.getElementById("response").style.display = "flex";
   };
+
+  const handle_dismiss = () => {
+    document.getElementById("main").style.display = "flex";
+    document.getElementById("response").style.display = "none";
+  }
 
   return (
     <>
-      <main>
+      <main id="main">
         <section className="image_section"></section>
         <section className="infos_section">
           <h1>Stay updated!</h1>
@@ -63,6 +70,16 @@ function App() {
           </form>
         </section>
       </main>
+
+      <div id="response">
+        <img src={icon_success} alt="Success" />
+        <h1>Thanks for subscribing!</h1>
+        <p>
+          A confirmation email has been sent to <strong>{email}</strong>. Please
+          open it and click the button inside to confirm your sbscription.
+        </p>
+        <button onClick={handle_dismiss}>Dismiss message</button>
+      </div>
     </>
   );
 }
